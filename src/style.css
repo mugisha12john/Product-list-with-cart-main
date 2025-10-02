@@ -1,1 +1,11 @@
 @import "tailwindcss";
+::root{
+        --colorRed: rgb(199, 58, 15);
+    --colorGreen: #1ea475;
+    --colorRose-50: #fcf9f7;
+    --colorRose-100: #f4edeb;
+    --colorRose-300: #c9aea6;
+    --colorRose-400: #ad8985;
+    --colorRose-500: #87635a;
+    --colorRose-900: #260f08;
+}
