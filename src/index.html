@@ -26,10 +26,10 @@
     </style>
   </head>
   <body class="bg-[#fcf9f7] font-sans">
-    <main>
+    <main class="flex">
       <section class="max-w-4xl m-8 p-8">
         <h1 class="mb-12 mt-5 text-5xl font-bold text-[#260f08]">Desserts</h1>
-        <div class="grid grid-cols-3 gap-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-12">
           <div class="relative mt-2">
             <div>
               <img
@@ -81,7 +81,7 @@
               />
 
               <button
-                class="w-40 absolute left-10 top-[240px] p-2 text-[#260f08] border-2 border-[#87635a] bg-white font-bold rounded-full hover:cursor-pointer"
+                class="w-40 absolute left-10 top-[240px] p-2 text-[#260f08] border-2 border-[#87635a] bg-white font-black rounded-full hover:cursor-pointer"
               >
                 Add to Cart
               </button>
@@ -94,6 +94,20 @@
           </div>
         </div>
       </section>
+
+      <div class="w-1/4 max-w-4xl mt-20 bg-white rounded-2xl p-8">
+        <h1 class="text-2xl text-[#9b4f38] font-bold">Your Cart(0)</h1>
+        <div>
+          <img
+            src="/assets/images/illustration-empty-cart.svg"
+            class="mx-auto mt-20 mb-6"
+            alt="your cart is empty"
+          />
+          <p class="mx-auto mt-20 mb-6 text-center">
+            Your added item will apear here
+          </p>
+        </div>
+      </div>
     </main>
   </body>
 </html>
