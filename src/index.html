@@ -13,7 +13,7 @@
     />
     <link href="./output.css" rel="stylesheet" />
     <title>Product list with cart</title>
-
+    <script type="module" defer src="/src/script.js"></script>
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
       .attribution {
@@ -29,77 +29,14 @@
     <main class="flex flex-col lg:flex-row">
       <section class="max-w-4xl m-8 p-8">
         <h1 class="mb-12 mt-5 text-5xl font-bold text-[#260f08]">Desserts</h1>
-        <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-12">
-          <div class="relative mt-2">
-            <div>
-              <img
-                src="/assets/images/image-waffle-desktop.jpg"
-                alt="Dessert 1"
-                class="w-65 h-65 rounded-lg"
-              />
-
-              <button
-                class="w-40 absolute left-10 top-[240px] flex justify-center items-center gap-2 p-2 text-[#260f08] border-2 border-[#87635a] bg-white font-bold rounded-full hover:cursor-pointer"
-              >
-                <img src="/assets/images/icon-add-to-cart.svg" alt="" /> Add to
-                Cart
-              </button>
-            </div>
-            <h2 class="mt-10 text-sm font-normal text-[#87635a]">Walfy</h2>
-            <h2 class="text-lg font-bold text-[#260f08]">
-              Japanese Cheesecake
-            </h2>
-            <p class="font-bold text-[#9b4f38]">$15.00</p>
-          </div>
-
-          <div class="relative mt-2">
-            <div>
-              <img
-                src="/assets/images/image-waffle-desktop.jpg"
-                alt="Dessert 1"
-                class="w-65 h-65 rounded-lg"
-              />
-
-              <button
-                class="w-40 absolute left-10 top-[240px] flex justify-center items-center gap-2 p-2 text-[#260f08] border-2 border-[#87635a] bg-white font-bold rounded-full hover:cursor-pointer"
-              >
-                <img src="/assets/images/icon-add-to-cart.svg" alt="" /> Add to
-                Cart
-              </button>
-            </div>
-            <h2 class="mt-10 text-sm font-normal text-[#87635a]">Walfy</h2>
-            <h2 class="text-lg font-bold text-[#260f08]">
-              Japanese Cheesecake
-            </h2>
-            <p class="font-bold text-[#9b4f38]">$15.00</p>
-          </div>
-
-          <div class="relative mt-2">
-            <div>
-              <img
-                src="/assets/images/image-waffle-desktop.jpg"
-                alt="Dessert 1"
-                class="w-65 h-65 rounded-lg object-cover"
-              />
-
-              <button
-                class="w-40 absolute left-10 top-[240px] flex justify-center items-center gap-2 p-2 text-[#260f08] border-2 border-[#87635a] bg-white font-bold rounded-full hover:cursor-pointer"
-              >
-                <img src="/assets/images/icon-add-to-cart.svg" alt="" /> Add to
-                Cart
-              </button>
-            </div>
-            <h2 class="mt-10 text-sm font-normal text-[#87635a]">Walfy</h2>
-            <h2 class="text-lg font-bold text-[#260f08]">
-              Japanese Cheesecake
-            </h2>
-            <p class="font-bold text-[#9b4f38]">$15.00</p>
-          </div>
-        </div>
+        <div
+          id="product-list"
+          class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-12"
+        ></div>
       </section>
 
       <div
-        class="lg:w-1/4 w-80 mx-auto lg:max-w-4xl mt-20 bg-white rounded-2xl p-8"
+        class="lg:w-1/4 w-80 h-[80vh] mx-auto lg:max-w-4xl mt-20 bg-white rounded-2xl p-8"
       >
         <h1 class="text-2xl text-[#c03916] font-bold">Your Cart(0)</h1>
         <div class="mt-8 space-y-4">
@@ -175,7 +112,9 @@
         </button>
       </div>
     </main>
-    <div class="fixed inset-0 bg-black/20 flex px-4 z-50 py-6">
+
+    <!-- Confirm pop box for the order -->
+    <div class="fixed inset-0 bg-black/20 px-4 z-50 py-6 hidden">
       <div
         class="bg-white rounded-lg shadow-lg w-full max-w-md my-10 mx-auto p-4 sm:p-6 relative overflow-y-auto max-h-[80vh]"
       >
@@ -188,14 +127,13 @@
           <img
             src="/assets/images/icon-remove-item.svg"
             alt="icon-remove-item"
-            class=" size-5 cursor-pointer"
+            class="size-5 cursor-pointer"
           />
         </div>
         <div class="mt-4">
           <h1 class="text-3xl text-[#2b100a] font-bold">Order confirmed</h1>
           <h2 class="font-normal">We hope you enjoy your food!</h2>
         </div>
-
         <div class="flex justify-between m-8 mt-4">
           <main class="flex gap-5">
             <img
@@ -213,12 +151,10 @@
           </main>
           <h4 class="text-[#2b100a] mt-4 font-extrabold text-sm">$4.45</h4>
         </div>
-
         <div class="flex mt-2 m-8 justify-between items-center">
           <h4>Order Total</h4>
           <p class="font-black text-2xl text-[#2b100a]">$ 50.5</p>
         </div>
-
         <button
           class="p-2 mt-4 rounded-2xl bg-[#952c0c] hover:bg-[#70240d] cursor-pointer text-white font-medium w-full"
         >
