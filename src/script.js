@@ -4,45 +4,46 @@ const productList = document.getElementById("product-list");
 function toggleCart(e) {
   const btn = e.currentTarget;
 
+  // Replace the "Add to Cart" button with quantity controls
   btn.outerHTML = `
-    <div class="w-36 absolute left-10 top-[220px] flex justify-around gap-2 p-2 text-white bg-[#c83910] font-bold rounded-full">
-      <button id="decrement-btn">
-        <img
-          src="/assets/images/icon-decrement-quantity.svg"
-          alt="decrement quantity"
-          class="w-5 h-5 border-white border-2 rounded-full p-[2px] cursor-pointer"
-        />
+    <div class="cart-controls absolute left-10 top-[220px] w-36 flex justify-around gap-2 p-2 text-white bg-[#c83910] font-bold rounded-full">
+      <button class="decrement-btn">
+        <img src="/assets/images/icon-decrement-quantity.svg"
+             alt="decrement quantity"
+             class="w-5 h-5 border-white border-2 rounded-full p-[2px] cursor-pointer"/>
       </button>
-      <p id="item-quantity">1</p>
-      <button id="increment-btn">
-        <img
-          src="/assets/images/icon-increment-quantity.svg"
-          alt="increment quantity"
-          class="w-5 h-5 border-white border-2 rounded-full p-[2px] cursor-pointer"
-        />
+      <p class="item-quantity">1</p>
+      <button class="increment-btn">
+        <img src="/assets/images/icon-increment-quantity.svg"
+             alt="increment quantity"
+             class="w-5 h-5 border-white border-2 rounded-full p-[2px] cursor-pointer"/>
       </button>
     </div>
   `;
-  btn.removeEventListener("click", toggleCart);
-  // increment and decrement item quantity
-  const incrementBtn = document.getElementById("increment-btn");
-  const decrementBtn = document.getElementById("decrement-btn");
-  const itemQuantity = document.getElementById("item-quantity");
-  let quantity = 1;
-  incrementBtn?.addEventListener("click", () => {
-    quantity += 1;
-    itemQuantity.textContent = quantity;
-  });
-  console.log(decrementBtn);
-  decrementBtn?.addEventListener("click", () => {
-    if (quantity > 1) {
-      quantity -= 1;
-      itemQuantity.textContent = quantity;
+}
+
+// ✅ Event delegation: one listener for all increment/decrement buttons
+document.addEventListener("click", (e) => {
+  const incrementBtn = e.target.closest(".increment-btn");
+  const decrementBtn = e.target.closest(".decrement-btn");
+
+  if (incrementBtn) {
+    const controls = incrementBtn.closest(".cart-controls");
+    const itemQuantity = controls.querySelector(".item-quantity");
+    itemQuantity.textContent = parseInt(itemQuantity.textContent) + 1;
+  }
+
+  if (decrementBtn) {
+    const controls = decrementBtn.closest(".cart-controls");
+    const itemQuantity = controls.querySelector(".item-quantity");
+    let val = parseInt(itemQuantity.textContent);
+    if (val > 1) {
+      itemQuantity.textContent = val - 1;
     } else {
       alert("Quantity cannot be less than 1");
     }
-  });
-}
+  }
+});
 
 function cardListItem(category, name, price, image, index) {
   return `<div " class="relative mt-2" >
