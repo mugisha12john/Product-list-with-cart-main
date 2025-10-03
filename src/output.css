@@ -201,17 +201,8 @@
   .inset-0 {
     inset: calc(var(--spacing) * 0);
   }
-  .top-\[20px\] {
-    top: 20px;
-  }
-  .top-\[200px\] {
-    top: 200px;
-  }
   .top-\[220px\] {
     top: 220px;
-  }
-  .top-\[240px\] {
-    top: 240px;
   }
   .left-10 {
     left: calc(var(--spacing) * 10);
@@ -274,14 +265,8 @@
     width: calc(var(--spacing) * 5);
     height: calc(var(--spacing) * 5);
   }
-  .h-4 {
-    height: calc(var(--spacing) * 4);
-  }
   .h-5 {
     height: calc(var(--spacing) * 5);
-  }
-  .h-6 {
-    height: calc(var(--spacing) * 6);
   }
   .h-7 {
     height: calc(var(--spacing) * 7);
@@ -292,23 +277,11 @@
   .h-60 {
     height: calc(var(--spacing) * 60);
   }
-  .h-65 {
-    height: calc(var(--spacing) * 65);
-  }
-  .h-69 {
-    height: calc(var(--spacing) * 69);
-  }
   .h-\[80vh\] {
     height: 80vh;
   }
   .max-h-\[80vh\] {
     max-height: 80vh;
-  }
-  .w-3 {
-    width: calc(var(--spacing) * 3);
-  }
-  .w-4 {
-    width: calc(var(--spacing) * 4);
   }
   .w-5 {
     width: calc(var(--spacing) * 5);
@@ -321,9 +294,6 @@
   }
   .w-36 {
     width: calc(var(--spacing) * 36);
-  }
-  .w-38 {
-    width: calc(var(--spacing) * 38);
   }
   .w-40 {
     width: calc(var(--spacing) * 40);
@@ -343,17 +313,8 @@
   .max-w-md {
     max-width: var(--container-md);
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .cursor-progress {
-    cursor: progress;
-  }
-  .resize {
-    resize: both;
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -404,10 +365,6 @@
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
   .border-1 {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -433,12 +390,6 @@
   }
   .bg-\[\#fcf9f7\] {
     background-color: #fcf9f7;
-  }
-  .bg-\[c83910\] {
-    background-color: c83910;
-  }
-  .bg-black {
-    background-color: var(--color-black);
   }
   .bg-black\/20 {
     background-color: color-mix(in srgb, #000 20%, transparent);
@@ -493,10 +444,6 @@
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
-  .text-xl {
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
-  }
   .font-black {
     --tw-font-weight: var(--font-weight-black);
     font-weight: var(--font-weight-black);
@@ -538,9 +485,6 @@
   }
   .text-white {
     color: var(--color-white);
-  }
-  .underline {
-    text-decoration-line: underline;
   }
   .shadow-lg {
     --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
