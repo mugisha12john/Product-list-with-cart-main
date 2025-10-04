@@ -3,7 +3,11 @@ const data = await fetch("../data.json").then((res) => res.json());
 const productList = document.getElementById("product-list");
 function toggleCart(e) {
   const btn = e.currentTarget;
-
+  const parent = e.target.parentElement;
+  const details = btn.closest(".product-details");
+  const { id, category, name, price } = details.dataset;
+  console.log(id, category, name, price);
+  console.log(parent);
   // Replace the "Add to Cart" button with quantity controls
   btn.outerHTML = `
     <div class="cart-controls absolute left-10 top-[220px] w-36 flex justify-around gap-2 p-2 text-white bg-[#c83910] font-bold rounded-full">
@@ -31,6 +35,7 @@ document.addEventListener("click", (e) => {
     const controls = incrementBtn.closest(".cart-controls");
     const itemQuantity = controls.querySelector(".item-quantity");
     itemQuantity.textContent = parseInt(itemQuantity.textContent) + 1;
+    
   }
 
   if (decrementBtn) {
@@ -43,15 +48,24 @@ document.addEventListener("click", (e) => {
       alert("Quantity cannot be less than 1");
     }
   }
+
+  function AddtoCart(){}
 });
 
 function cardListItem(category, name, price, image, index) {
-  return `<div " class="relative mt-2" >
-             <div>
+  return `<div 
+            class="product-details relative mt-2"
+            data-id="${index}" 
+            data-category="${category}" 
+            data-name="${name}" 
+            data-price="${price}"
+            > 
+         <div>
               <img
+               id="product-image"
                 src="${image}"
                 alt="${name}"
-                class="w-65 h-60 rounded-lg"
+                class="w-65 h-60 rounded-lg object-cover "
               />
 
               <button data-id="${index}" 
