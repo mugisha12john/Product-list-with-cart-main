@@ -2,6 +2,7 @@ const data = await fetch("../data.json").then((res) => res.json());
 const productList = document.getElementById("product-list");
 const cartItem = document.getElementById("cart-items");
 const total = document.getElementById("cart-totals-title");
+const modalTotal = document.getElementById("modal-total");
 let cart = [];
 
 //  Create each product card
@@ -93,6 +94,29 @@ function updateCartUI() {
       </div>
       
     `;
+    const total = cart.reduce((a, b) => a + b.price * b.quantity, 0);
+    modalTotal.innerHTML = `  
+          <div class="flex mt-2 justify-between items-center">
+            <h4>Order Total</h4>
+            <p class="font-black text-3xl text-[#2b100a]">$${total.toFixed(
+              2
+            )}</p>
+          </div>
+          <div
+            class="flex justify-center text-[#2b100a] bg-[#fcf9f7] p-4 mt-4 rounded-2xl"
+          >
+            <img
+              src="/assets/images/icon-carbon-neutral.svg"
+              alt="icon-carbon-neutral"
+            />
+            <h2>This is a <b>carbon-neutral</b> delivery</h2>
+          </div>
+          <button
+            class="p-2 mt-4 rounded-2xl bg-[#952c0c] hover:bg-[#70240d] cursor-pointer text-white font-medium w-full"
+          >
+            Confirm order
+          </button>
+       `;
   });
 }
 
