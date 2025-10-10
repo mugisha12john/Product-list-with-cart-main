@@ -38,7 +38,9 @@
       <div
         class="lg:w-1/4 w-80 h-[80vh] mx-auto lg:max-w-4xl mt-20 bg-white rounded-2xl p-8"
       >
-        <h1 class="text-2xl text-[#c03916] font-bold">Your Cart(0)</h1>
+        <h1 id="cart-totals-title" class="text-2xl text-[#c03916] font-bold">
+          Your Cart(0)
+        </h1>
         <div id="cart-items" class="mt-8 space-y-4">
           <img
             src="/assets/images/illustration-empty-cart.svg"
@@ -68,26 +70,7 @@
           </div>
           <hr class="border-1 border-red-50" /> -->
         </div>
-        <!-- <section>
-          <div class="flex mt-2 justify-between items-center">
-            <h4>Order Total</h4>
-            <p class="font-black text-3xl text-[#2b100a]">$ 50.5</p>
-          </div>
-          <div
-            class="flex justify-center text-[#2b100a] bg-[#fcf9f7] p-4 mt-4 rounded-2xl"
-          >
-            <img
-              src="/assets/images/icon-carbon-neutral.svg"
-              alt="icon-carbon-neutral"
-            />
-            <h2>This is a <b>carbon-neutral</b> delivery</h2>
-          </div>
-          <button
-            class="p-2 mt-4 rounded-2xl bg-[#952c0c] hover:bg-[#70240d] cursor-pointer text-white font-medium w-full"
-          >
-            Confirm order
-          </button>
-        </section> -->
+        <section id="modal-total"></section>
       </div>
     </main>
 

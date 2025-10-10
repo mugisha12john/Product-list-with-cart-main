@@ -1,10 +1,9 @@
 const data = await fetch("../data.json").then((res) => res.json());
 const productList = document.getElementById("product-list");
-const cartItem = document.getElementById("cart-items");
-const total = document.getElementById("cart-totals-title");
+const cartItem = document.getElementById("cart-item");
 let cart = [];
 
-//  Create each product card
+// ✅ Create each product card
 function cardListItem(category, name, price, image, index) {
   return `
     <div class="product-details relative mt-2"
@@ -33,7 +32,7 @@ function cardListItem(category, name, price, image, index) {
   `;
 }
 
-//  Render all products
+// ✅ Render all products
 data.forEach((item, index) => {
   productList.innerHTML += cardListItem(
     item.category,
@@ -46,32 +45,26 @@ data.forEach((item, index) => {
 
 // ✅ Add to Cart function
 function AddtoCart(id, category, name, price, quantity = 1) {
-  const existingItem = cart.find((item) => item.id == id);
+  const existingItem = cart.find((item) => item.id === id);
+
   if (existingItem) {
-    console.log(existingItem);
     existingItem.quantity = quantity;
   } else {
     cart.push({ id, category, name, price, quantity });
   }
-  updateCartUI();
+
+
 }
 
 // ✅ Update cart UI in sidebar
 function updateCartUI() {
-  total.innerText = `Your Cart (${cart.length})`;
-  console.log(cart);
+  cartItem.innerHTML = "welcome"; // Clear existing content
+
   if (cart.length === 0) {
-    cartItem.innerHTML = `          <img
-            src="/assets/images/illustration-empty-cart.svg"
-            class="mx-auto mt-20 mb-6"
-            alt="your cart is empty"
-          />
-          <p class="mx-auto mt-20 mb-6 text-center">
-            Your Cart is empty
-          </p>`;
+    cartItem.innerHTML = `<p class="text-sm text-gray-500 mt-6">Your cart is empty</p>`;
     return;
   }
-  cartItem.innerHTML = ""; // Clear existing content
+
   cart.forEach(({ category, name, price, quantity, id }) => {
     cartItem.innerHTML += `
       <div class="mt-4 space-y-2">
@@ -91,7 +84,6 @@ function updateCartUI() {
         </div>
         <hr class="border border-red-50" />
       </div>
-      
     `;
   });
 }
@@ -121,6 +113,7 @@ function toggleCart(e) {
 
   // ✅ Add first item with quantity 1
   AddtoCart(id, category, name, parseFloat(price), 1);
+  cartItem.innerHTML = "hello";
 }
 
 // ✅ Attach click listener to all Add-to-Cart buttons
@@ -168,6 +161,6 @@ document.addEventListener("click", (e) => {
   if (removeBtn) {
     const id = removeBtn.dataset.id;
     cart = cart.filter((item) => item.id !== id);
-    updateCartUI();
+    // updateCartUI();
   }
 });
