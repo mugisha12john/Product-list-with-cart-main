@@ -3,6 +3,7 @@ const productList = document.getElementById("product-list");
 const cartItem = document.getElementById("cart-items");
 const total = document.getElementById("cart-totals-title");
 const modalTotal = document.getElementById("modal-total");
+const confirmedModalBox = document.getElementById("confirmed-modal-box");
 let cart = [];
 
 //  Create each product card
@@ -112,6 +113,7 @@ function updateCartUI() {
             <h2>This is a <b>carbon-neutral</b> delivery</h2>
           </div>
           <button
+            id="confirm-order-btn"
             class="p-2 mt-4 rounded-2xl bg-[#952c0c] hover:bg-[#70240d] cursor-pointer text-white font-medium w-full"
           >
             Confirm order
@@ -193,5 +195,58 @@ document.addEventListener("click", (e) => {
     const id = removeBtn.dataset.id;
     cart = cart.filter((item) => item.id !== id);
     updateCartUI();
+  }
+});
+
+document.addEventListener("click", (e) => {
+  const confirmOrderBtn = e.target.closest("#confirm-order-btn");
+  const result = document.getElementById("result");
+  const totalConfirmModal = document.getElementById("total-confirmal-modal");
+  if (confirmOrderBtn) {
+    const total = cart.reduce((a, b) => a + b.price * b.quantity, 0);
+    cart.map(({ name, price, quantity, id }) => {
+      result.innerHTML += `
+     
+                <main class="flex gap-5">
+            <img
+              src="/assets/images/image-baklava-mobile.jpg"
+              alt=""
+              class="w-12 h-10"
+            />
+            <section class="flex flex-col justify-center items-center">
+              <h2>${name}</h2>
+              <div class="flex justify-center gap-8">
+                <h2 class="text-sm text-[#c03916] font-bold">${quantity}x</h2>
+                <h2 class="text-[#87635a] font-medium text-sm">@ $${price.toFixed(
+                  2
+                )}</h2>
+              </div>
+            </section>
+            <h4 class="text-[#2b100a] mt-4  font-extrabold text-sm">$${
+              quantity * price.toFixed(2)
+            }</h4>
+          </main>
+          
+         `;
+      totalConfirmModal.textContent = total.toFixed(2);
+    });
+    confirmOrderBtn.addEventListener("click", () => {
+      confirmOrderBtn.classList.toggle("confirm");
+      confirmedModalBox.classList.toggle("hidden");
+      // cart = [];
+      // updateCartUI();
+    });
+  }
+  removeModalBox.addEventListener("click", () => {
+    confirmedModalBox.classList.toggle("hidden");
+  });
+});
+
+// Initial cart UI update
+updateCartUI();
+document.addEventListener("click", (e) => {
+  const removeModalBox = e.target.closest("#remove-modal-box");
+  if (removeModalBox) {
+    confirmedModalBox.classList.toggle("hidden");
   }
 });

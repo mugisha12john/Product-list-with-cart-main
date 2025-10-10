@@ -75,9 +75,12 @@
     </main>
 
     <!-- Confirm pop box for the order -->
-    <div class="fixed inset-0 bg-black/20 px-4 z-50 py-6 hidden">
+    <div
+      id="confirmed-modal-box"
+      class="fixed inset-0 bg-black/20 px-4 z-50 py-6 hidden"
+    >
       <div
-        class="bg-white rounded-lg shadow-lg w-full max-w-md my-10 mx-auto p-4 sm:p-6 relative overflow-y-auto max-h-[80vh]"
+        class="bg-white rounded-lg shadow-lg w-full max-w-md my-10 mx-auto p-4 sm:p-6 relative overflow-y-auto"
       >
         <div class="flex justify-between">
           <img
@@ -86,6 +89,7 @@
             class="w-12"
           />
           <img
+            id="remove-modal-box"
             src="/assets/images/icon-remove-item.svg"
             alt="icon-remove-item"
             class="size-5 cursor-pointer"
@@ -95,26 +99,10 @@
           <h1 class="text-3xl text-[#2b100a] font-bold">Order confirmed</h1>
           <h2 class="font-normal">We hope you enjoy your food!</h2>
         </div>
-        <div class="flex justify-between m-8 mt-4">
-          <main class="flex gap-5">
-            <img
-              src="/assets/images/image-baklava-mobile.jpg"
-              alt=""
-              class="w-12 h-10"
-            />
-            <section class="flex flex-col justify-center items-center">
-              <h2>Classic tiramisu</h2>
-              <div class="flex justify-center gap-8">
-                <h2 class="text-sm text-[#c03916] font-bold">1x</h2>
-                <h2 class="text-[#87635a] font-medium text-sm">@ $4.45</h2>
-              </div>
-            </section>
-          </main>
-          <h4 class="text-[#2b100a] mt-4 font-extrabold text-sm">$4.45</h4>
-        </div>
+        <div id="result" class="flex flex-col justify-between m-8 mt-4"></div>
         <div class="flex mt-2 m-8 justify-between items-center">
-          <h4>Order Total</h4>
-          <p class="font-black text-2xl text-[#2b100a]">$ 50.5</p>
+          <h4 >Order Total</h4>
+          <p id="total-confirmal-modal" class="font-black text-2xl text-[#2b100a]">3423</p>
         </div>
         <button
           class="p-2 mt-4 rounded-2xl bg-[#952c0c] hover:bg-[#70240d] cursor-pointer text-white font-medium w-full"
